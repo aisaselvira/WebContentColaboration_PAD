@@ -13,20 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/homepage', function () {
-    return view('homepage');
-});
+// Route::get('/homepage', function () {
+//     return view('homepage');
+// });
 
-Route::get('/sign_in', function () {
-    return view('sign_in');
-});
-Route::get('/sign_up', function () {
-    return view('sign_up');
-});
+// Route::get('/sign_in', function () {
+//     return view('sign_in');
+// });
+// Route::get('/sign_up', function () {
+//     return view('sign_up');
+// });
 
 // Route::get('/sign_up', function () {
 //     return view('sign_up', [
@@ -34,3 +34,12 @@ Route::get('/sign_up', function () {
 // });
 
 // Route::get('/homepage', [WCCController::class, 'homepage']);
+
+Route::controller(loginregis::class)->group(function() {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/authenticate', 'authenticate')->name('authenticate');
+    Route::get('/homepage', 'homepage')->name('homepage');
+    Route::post('/logout', 'logout')->name('logout');
+   });
